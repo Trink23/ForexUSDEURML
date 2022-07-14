@@ -33,8 +33,7 @@ namespace ForexUSDEURML
                                     .Append(mlContext.Transforms.ReplaceMissingValues(new []{new InputOutputColumnPair(@"BO", @"BO"),new InputOutputColumnPair(@"BH", @"BH"),new InputOutputColumnPair(@"BL", @"BL"),new InputOutputColumnPair(@"BCh", @"BCh"),new InputOutputColumnPair(@"AO", @"AO"),new InputOutputColumnPair(@"AH", @"AH"),new InputOutputColumnPair(@"AL", @"AL"),new InputOutputColumnPair(@"AC", @"AC"),new InputOutputColumnPair(@"ACh", @"ACh")}))      
                                     .Append(mlContext.Transforms.Text.FeaturizeText(@"Time", @"Time"))      
                                     .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"Date",@"BO",@"BH",@"BL",@"BCh",@"AO",@"AH",@"AL",@"AC",@"ACh",@"Time"}))      
-                                    .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))      
-                                    .Append(mlContext.Regression.Trainers.FastTreeTweedie(new FastTreeTweedieTrainer.Options(){NumberOfLeaves=2884,MinimumExampleCountPerLeaf=33,NumberOfTrees=157,MaximumBinCountPerFeature=404,LearningRate=2E-10F,FeatureFraction=0.385540525843678F,LabelColumnName=@"BC",FeatureColumnName=@"Features"}));
+                                    .Append(mlContext.Regression.Trainers.FastTree(new FastTreeRegressionTrainer.Options(){NumberOfLeaves=1170,MinimumExampleCountPerLeaf=128,NumberOfTrees=32768,MaximumBinCountPerFeature=1024,LearningRate=1F,FeatureFraction=0.273414289287469F,LabelColumnName=@"BC",FeatureColumnName=@"Features"}));
 
             return pipeline;
         }
