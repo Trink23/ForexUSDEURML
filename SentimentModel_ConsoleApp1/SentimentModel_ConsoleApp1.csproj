@@ -4,22 +4,15 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.ML" Version="1.6.0" />
-    <PackageReference Include="Microsoft.ML.FastTree" Version="1.6.0" />
-  </ItemGroup>
-  <ItemGroup Label="SentimentModel">
-    <None Include="SentimentModel.consumption.cs">
-      <DependentUpon>SentimentModel.mbconfig</DependentUpon>
-    </None>
-    <None Include="SentimentModel.training.cs">
-      <DependentUpon>SentimentModel.mbconfig</DependentUpon>
-    </None>
-    <None Include="SentimentModel.zip">
-      <DependentUpon>SentimentModel.mbconfig</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Remove="TrainData\eurusd_hour.csv" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TrainData\" />
+    <PackageReference Include="Microsoft.ML" Version="1.7.1" />
+    <PackageReference Include="Microsoft.ML.TimeSeries" Version="1.7.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TrainData\eurusd_hour.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 </Project>
